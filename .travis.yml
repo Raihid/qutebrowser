@@ -18,13 +18,39 @@ matrix:
     - os: linux
       env: DOCKER=ubuntu-xenial
       services: docker
+
     - os: osx
-      env: TESTENV=py35 OSX=elcapitan
+      env: TESTENV=py35 OSX=sierra QUTE_BDD_WEBENGINE=true
+      osx_image: xcode8.1
+    - os: osx
+      env: TESTENV=py35 OSX=elcapitan QUTE_BDD_WEB=true
+      osx_image: xcode8
+    - os: osx
+      env: TESTENV=py35 OSX=elcapitan QUTE_BDD_WEB=true
       osx_image: xcode7.3
+    - os: osx
+      env: TESTENV=py35 OSX=elcapitan QUTE_BDD_WEB=true
+      osx_image: xcode7.2
+    - os: osx
+      env: TESTENV=py35 OSX=yosemite QUTE_BDD_WEB=true
+      osx_image: xcode7.1
+    - os: osx
+      env: TESTENV=py35 OSX=yosemite QUTE_BDD_WEB=true
+      osx_image: xcode7
     # https://github.com/The-Compiler/qutebrowser/issues/2013
-    # - os: osx
-    #   env: TESTENV=py35 OSX=yosemite
-    #   osx_image: xcode6.4
+    - os: osx
+      env: TESTENV=py35 OSX=yosemite QUTE_BDD_WEB=true
+      osx_image: xcode6.4
+    - os: osx
+      env: TESTENV=py35 OSX=yosemite QUTE_BDD_WEB=true
+      osx_image: beta-xcode6.3
+    - os: osx
+      env: TESTENV=py35 OSX=mavericks QUTE_BDD_WEB=true
+      osx_image: beta-xcode6.2
+    - os: osx
+      env: TESTENV=py35 OSX=mavericks QUTE_BDD_WEB=true
+      osx_image: beta-xcode6.1
+
     - os: linux
       env: TESTENV=pylint
     - os: linux
@@ -41,10 +67,6 @@ matrix:
       env: TESTENV=check-manifest
     - os: linux
       env: TESTENV=eslint
-  allow_failures:
-    - os: osx
-      env: TESTENV=py35 OSX=elcapitan
-      osx_image: xcode7.3
   fast_finish: true
 
 cache:
