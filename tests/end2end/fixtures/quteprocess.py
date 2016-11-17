@@ -84,6 +84,11 @@ def is_ignored_lowlevel_message(message):
     elif message.endswith("Couldn't set selectedTextBackgroundColor from "
                           "default ()"):
         return True
+    elif 'malloc: *** error for object' in message:
+        return True
+    elif message.startswith('*** set a breakpoint in malloc_error_break to '
+                            'debug'):
+        return True
     return False
 
 
