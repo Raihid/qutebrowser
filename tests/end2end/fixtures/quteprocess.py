@@ -63,6 +63,27 @@ def is_ignored_lowlevel_message(message):
         return True
     elif 'CERT_PKIXVerifyCert for localhost failed' in message:
         return True
+    elif message == '[warn] kq_init: detected broken kqueue; not using.: Undefined error: 0':
+        return True
+    elif message.endswith(
+            'XType: failed to connect - Error Domain=NSCocoaErrorDomain '
+            'Code=4099 "The connection to service named com.apple.fonts was '
+            'invalidated." UserInfo={NSDebugDescription=The connection to '
+            'service named com.apple.fonts was invalidated.}'):
+        return True
+    elif message.endswith('Font server protocol version mismatch (expected:5 '
+                          'got:0), falling back to local fonts'):
+        return True
+    elif message.endswith('XType: unable to make a connection to the font '
+                          'daemon!'):
+        return True
+    elif message.endswith('registering /System/Library/Fonts/*, '
+                          '/System/Library/Fonts/Base/*, and /Library/Fonts/* '
+                          'locally'):
+        return True
+    elif message.endswith("Couldn't set selectedTextBackgroundColor from "
+                          "default ()"):
+        return True
     return False
 
 
