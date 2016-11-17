@@ -89,6 +89,8 @@ def is_ignored_lowlevel_message(message):
     elif message.startswith('*** set a breakpoint in malloc_error_break to '
                             'debug'):
         return True
+    elif message.endswith('is sending Mach IPC messages!'):
+        return True
     return False
 
 
